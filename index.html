@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal Expense Tracker web app to manage daily expenses. Add, view, delete, and sort expenses with category badges and total expense calculation. Responsive design with desktop table and mobile card views."
+    />
+    <title>Personal Expense Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  </head>
+  <body
+    class="bg-gradient-to-br from-purple-700 via-pink-400 to-purple-500 font-sans min-h-screen flex flex-col"
+  >
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-purple-800 to-pink-500 text-white p-4 sm:p-6 shadow-2xl text-center rounded-b-3xl"
+    >
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wide">
+        Personal Expense Tracker
+      </h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-4 sm:p-6 flex-grow max-w-4xl mx-auto w-full">
+      <!-- Expense Form -->
+      <div
+        class="bg-white bg-opacity-90 p-4 sm:p-6 rounded-2xl shadow-2xl mb-6 hover:shadow-3xl transition w-full"
+      >
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-purple-700">
+          Add New Expense
+        </h2>
+        <form id="expense-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            type="date"
+            id="date"
+            class="p-3 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full"
+            required
+          />
+          <select
+            id="category"
+            class="p-3 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full"
+            required
+          >
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Others">Others</option>
+          </select>
+          <input
+            type="text"
+            id="description"
+            placeholder="Description"
+            class="p-3 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full"
+            required
+          />
+          <input
+            type="number"
+            id="amount"
+            placeholder="Amount (&#8377;)"
+            class="p-3 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full"
+            required
+          />
+          <button
+            type="submit"
+            class="col-span-1 sm:col-span-2 bg-pink-500 text-white p-3 rounded-lg hover:bg-pink-600 hover:scale-105 transition transform w-full"
+          >
+            Add Expense
+          </button>
+        </form>
+      </div>
+
+      <!-- Expense Table & Mobile Cards -->
+      <div
+        class="bg-white bg-opacity-90 p-4 sm:p-6 rounded-2xl shadow-2xl w-full"
+      >
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-purple-700">
+          Expenses
+        </h2>
+
+        <!-- Total Expense & Sort Button -->
+        <div class="mb-4 flex justify-between items-center">
+          <div class="font-bold text-purple-800 text-lg">
+            Total Expenses: &#8377;<span id="total-expense">0</span>
+          </div>
+          <button
+            id="sort-date-btn"
+            class="bg-purple-500 text-white px-3 py-1 rounded hover:bg-purple-600 transition"
+          >
+            Sort by Date ↑
+          </button>
+        </div>
+
+        <!-- Desktop Table -->
+        <div class="hidden sm:block overflow-x-auto">
+          <table
+            class="min-w-full divide-y divide-gray-200 table-auto rounded-lg"
+          >
+            <thead class="bg-purple-200">
+              <tr>
+                <th
+                  class="px-2 sm:px-4 py-2 text-left text-sm md:text-base font-medium text-purple-800"
+                >
+                  Date
+                </th>
+                <th
+                  class="px-2 sm:px-4 py-2 text-left text-sm md:text-base font-medium text-purple-800"
+                >
+                  Category
+                </th>
+                <th
+                  class="px-2 sm:px-4 py-2 text-left text-sm md:text-base font-medium text-purple-800"
+                >
+                  Description
+                </th>
+                <th
+                  class="px-2 sm:px-4 py-2 text-left text-sm md:text-base font-medium text-purple-800"
+                >
+                  Amount (&#8377;)
+                </th>
+                <th
+                  class="px-2 sm:px-4 py-2 text-left text-sm md:text-base font-medium text-purple-800"
+                >
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody id="expense-table" class="divide-y divide-gray-200"></tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="sm:hidden flex flex-col gap-4" id="expense-cards"></div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+/* Table row hover effect */
+table tr:hover {
+  background-color: rgba(255, 105, 180, 0.15); /* subtle pink highlight */
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover smooth lift */
+button:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* Category badge style */
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  color: white;
+  font-weight: 500;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
